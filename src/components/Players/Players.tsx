@@ -2,6 +2,7 @@
 import type { Iplayer } from '../../player'
 import { use, useState } from 'react'
 import AvailablePlayers from '../AvailablePlayers/AvailablePlayers'
+import SelectedPlayers from '../SelectedPlayers'
 interface PlayerProps {
   playersDataFetch: Promise <Iplayer[]>
 }
@@ -16,7 +17,10 @@ function Players({playersDataFetch}:PlayerProps) {
   return (
      <div className='container mx-auto py-4'>
       <div className=' flex justify-between'>
-         <h1 className='font-semibold text-2xl'>Available Players</h1>
+         <h1 className='font-semibold text-2xl'>  {
+          buttonType ==="available"? "Available Players"
+          : "Selected Players"
+         }</h1>
           
   <div className="flex ">
   <button onClick={()=> setButtonHandler("available")} className={`px-4 py-2 rounded-2xl rounded-r-none ${
@@ -36,9 +40,11 @@ function Players({playersDataFetch}:PlayerProps) {
   </button>
 </div>
         </div> 
-         <AvailablePlayers players={players}></AvailablePlayers>
-     </div>
-    
+          {
+          buttonType ==="available"?  <AvailablePlayers players={players}></AvailablePlayers> 
+          :  <SelectedPlayers></SelectedPlayers>
+         }
+</div>
   )
 }
 
