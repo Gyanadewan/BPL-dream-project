@@ -1,16 +1,19 @@
 
-import { useState } from "react";
+import { useState, type Dispatch, type SetStateAction } from "react";
 import type { Iplayer } from "../../player";
 import { toast } from "react-toastify";
+import SelectedPlayers from "../SelectedPlayers";
 
 
 interface IavailAbleProps {
   player: Iplayer
   coin: number
   setCoin: React.Dispatch<React.SetStateAction<number>>
+  selectedPlayers:Iplayer[]
+   setSelctedPlayers: Dispatch<SetStateAction<Iplayer[]>>
 }
 
-function Player({ player,coin,setCoin }: IavailAbleProps ) {
+function Player({ player,coin,setCoin,selectedPlayers,setSelctedPlayers }: IavailAbleProps ) {
    const [isSelected,setSelcted] = useState(false)
    const handelSelectPlayer = () => {
          setSelcted(true)
@@ -23,6 +26,9 @@ function Player({ player,coin,setCoin }: IavailAbleProps ) {
             toast ("tumar taka sej")
          }
          
+
+         //selected players
+         setSelctedPlayers([...selectedPlayers,player])
    }
   return (
     <div className=" container mx-auto   bg-white rounded-2xl shadow-md overflow-hidden border border-gray-200 hover:shadow-xl transition duration-300">
