@@ -1,19 +1,22 @@
 import React, { type Dispatch, type SetStateAction } from 'react'
 import type { Iplayer } from '../player'
-import Player from './Player/Player'
 import { FaTrash } from 'react-icons/fa'
 // import { FaTrashCan } from "react-icons/fa6";
 interface IselectedPlayers {
    selectedPlayers:Iplayer[]
    setSelctedPlayers: Dispatch<SetStateAction<Iplayer[]>>
-   
+    coin: number
+  setCoin: Dispatch<SetStateAction <number>>
 }
-function SelectedPlayers({selectedPlayers,setSelctedPlayers}:IselectedPlayers) {
+function SelectedPlayers({selectedPlayers,setSelctedPlayers,coin, setCoin}:IselectedPlayers) {
   
   const handleRemovePlayer = (player:Iplayer) => {
     const resPlayers = selectedPlayers.filter(selectedPlayer=> selectedPlayer.playerName !==player.playerName)
     setSelctedPlayers(resPlayers)
-   
+    setCoin(prevCoin => prevCoin + player.price)
+  }
+  if (selectedPlayers.length ===0 ){
+    return <h1 className='text-4xl font-bold text-center text-red-500'>No Selected Players</h1>
   }
   return (
     <div>

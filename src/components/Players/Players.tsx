@@ -48,7 +48,8 @@ function Players({playersDataFetch,coin,setCoin,selectedPlayers,setSelctedPlayer
         
           {
           buttonType ==="available"?   <AvailablePlayers players={players} coin={coin} setCoin={setCoin} selectedPlayers={selectedPlayers}  setSelctedPlayers={setSelctedPlayers}></AvailablePlayers> 
-          :  <SelectedPlayers selectedPlayers={selectedPlayers}  setSelctedPlayers={setSelctedPlayers}></SelectedPlayers>
+          :  <SelectedPlayers selectedPlayers={selectedPlayers}  setSelctedPlayers={setSelctedPlayers}  coin={coin}
+          setCoin={setCoin}></SelectedPlayers>
          }
       
 </div>
