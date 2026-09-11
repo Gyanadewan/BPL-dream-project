@@ -1,15 +1,18 @@
-
 import type { Iplayer } from '../../player'
-import { use, useState } from 'react'
+import { use, useState, type SetStateAction } from 'react'
 import AvailablePlayers from '../AvailablePlayers/AvailablePlayers'
 import SelectedPlayers from '../SelectedPlayers'
+
 interface PlayerProps {
-  playersDataFetch: Promise <Iplayer[]>
+  playersDataFetch: Promise<Iplayer[]>
+  coin: number
+  setCoin: React.Dispatch<SetStateAction<number>>
 }
-function Players({playersDataFetch}:PlayerProps) {
+function Players({playersDataFetch,coin,setCoin}:PlayerProps) {
    const players = use(playersDataFetch)
 
    const [buttonType,setButtonType] = useState("available")
+  
   
    const  setButtonHandler = (type:string)=> {
        setButtonType(type)
@@ -41,7 +44,7 @@ function Players({playersDataFetch}:PlayerProps) {
 </div>
         </div> 
           {
-          buttonType ==="available"?  <AvailablePlayers players={players}></AvailablePlayers> 
+          buttonType ==="available"?  <AvailablePlayers players={players} coin={coin} setCoin={setCoin}></AvailablePlayers> 
           :  <SelectedPlayers></SelectedPlayers>
          }
 </div>

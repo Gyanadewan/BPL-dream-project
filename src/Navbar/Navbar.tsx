@@ -1,6 +1,6 @@
 import React from 'react'
 import NavLogo from'../assets/logo.png'
-function Navbar() {
+function Navbar({coin}) {
   return (
     <nav className='bg-amber-300'>
          <div className='container mx-auto flex justify-between '>
@@ -13,7 +13,7 @@ function Navbar() {
                    <li><a href="">Schedules</a></li>
                 </ul>
                  <h3>
-               <span>0</span> Coin
+                  <h2 className='text-2xl font-semibold'>{coin}</h2>
                </h3>
                 </div>
          </div>

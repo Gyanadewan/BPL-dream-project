@@ -24,7 +24,7 @@
     "playerType": "Bowler",
     "bowlingStyle": "Right-arm leg break",
     "battingStyle": "Right-hand",
-    "price": 700
+    "price": 1000
   },
   {
     "playerName": "Jos Buttler",
@@ -69,7 +69,7 @@
     "playerType": "Batter",
     "bowlingStyle": "Right-arm off break",
     "battingStyle": "Right-hand",
-    "price": 700
+    "price": 900
   },
   {
     "playerName": "Shaheen Afridi",
@@ -78,7 +78,7 @@
     "playerType": "Bowler",
     "bowlingStyle": "Left-arm fast",
     "battingStyle": "Left-hand",
-    "price": 600
+    "price": 800
   },
   {
     "playerName": "Ravindra Jadeja",
@@ -87,6 +87,6 @@
     "playerType": "All-Rounder",
     "bowlingStyle": "Left-arm orthodox",
     "battingStyle": "Left-hand",
-    "price": 200
+    "price": 500
   }
 ]

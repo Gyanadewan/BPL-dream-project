@@ -1,12 +1,29 @@
-import React from "react";
+
+import { useState } from "react";
 import type { Iplayer } from "../../player";
+import { toast } from "react-toastify";
 
 
-interface PlayerProps {
-  player: Iplayer;
+interface IavailAbleProps {
+  player: Iplayer
+  coin: number
+  setCoin: React.Dispatch<React.SetStateAction<number>>
 }
 
-function Player({ player }: PlayerProps) {
+function Player({ player,coin,setCoin }: IavailAbleProps ) {
+   const [isSelected,setSelcted] = useState(false)
+   const handelSelectPlayer = () => {
+         setSelcted(true)
+         const newPrice = coin - player.price
+         if (newPrice >= 0){
+             setCoin(newPrice)
+             toast(`${player.playerName} is purches successfully`)
+         }
+         else{
+            toast ("tumar taka sej")
+         }
+         
+   }
   return (
     <div className=" container mx-auto   bg-white rounded-2xl shadow-md overflow-hidden border border-gray-200 hover:shadow-xl transition duration-300">
       
@@ -60,8 +77,13 @@ function Player({ player }: PlayerProps) {
             </p>
           </div>
 
-          <button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2 rounded-lg transition">
-            Choose Player
+          <button onClick={()=>handelSelectPlayer()} className={isSelected === true? "bg-gray-200  text-white font-semibold px-5 py-2 rounded-lg transition":"bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2 rounded-lg transition"}
+            disabled = {isSelected === true? true : false}>
+            {
+              isSelected === true ? "Selected": "Choose player"
+            }
+            
+            
           </button>
         </div>
       </div>
